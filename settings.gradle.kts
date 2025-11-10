@@ -13,6 +13,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+//    includeBuild("buildsystem/convention")
 }
 
 dependencyResolutionManagement {
@@ -28,4 +29,10 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+//include(":composeApp")
+include(":androidApp")
+include(":common")
+include(":common:core")
+include(":common:data")
+include(":common:ui")
+include(":common:utils")
