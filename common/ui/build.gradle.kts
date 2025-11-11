@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -9,7 +10,7 @@ plugins {
 }
 
 kotlin {
-    // Targets: Android + iOS only (add iosX64() if you need Intel simulators)
+    applyDefaultHierarchyTemplate()
     androidLibrary {
         namespace = "com.tagaev.common.ui"
         compileSdk = 35
@@ -17,9 +18,25 @@ kotlin {
         // withJava() // uncomment if you have Java sources in androidMain
         // Compose note: with the Kotlin Compose Compiler plugin applied, you do not need buildFeatures.compose
     }
-    iosArm64()
-    iosSimulatorArm64()
-    applyDefaultHierarchyTemplate()
+    val iosArm64Target = iosArm64()
+    val iosSimArm64Target = iosSimulatorArm64()
+
+    // Optional: JVM target for any desktop previews
+    jvmToolchain(17)
+
+    // Create an XCFramework aggregator (this is what adds assembleXCFramework*)
+    val xcf = XCFramework()
+
+    listOf(
+        iosArm64Target,
+        iosSimArm64Target
+    ).forEach { target ->
+        target.binaries.framework {
+            baseName = "WeatherUI"   // <- Swift import name
+            isStatic = false
+            xcf.add(this)            // <- registers assembleXCFramework tasks
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -66,8 +83,11 @@ kotlin {
         }
 
         // iOS UI-specific deps go here if/when you add any
-        val iosMain by getting
+        val iosMain by getting {
+            dependencies {
+                implementation(compose.runtime)
+                implementation(compose.ui)
+            }
+        }
     }
 }
-
-

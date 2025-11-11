@@ -1,6 +1,6 @@
 import UIKit
 import SwiftUI
-import ComposeApp
+import WeatherUI
 
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
@@ -17,6 +17,4 @@ struct ContentView: View {
             .ignoresSafeArea()
     }
 }
-
-
 
