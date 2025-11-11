@@ -88,11 +88,7 @@ class MainWeatherComponent(
                 _resource.value = Resource.Loading
             }
 
-            // UI-side debounce to avoid spamming the API
             val now = nowEpochMs()
-            if (_resource.value is Resource.Success && now - lastManualMs < RequestPolicy.MIN_REFRESH_INTERVAL_MS) {
-                return@launch
-            }
             lastManualMs = now
 
             val coords = appSettings.loadCoordinates() ?: Coordinates(55.7569f, 37.6151f)

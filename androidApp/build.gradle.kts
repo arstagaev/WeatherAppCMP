@@ -38,9 +38,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-//    kotlinOptions {
-//        jvmTarget = "11"
-//    }
+
     buildFeatures {
         compose = true
     }
@@ -57,20 +55,17 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("com.google.android.material:material:1.12.0")
+    implementation(libs.material)
 
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.androidx.core.splashscreen)
 
-    implementation("io.ktor:ktor-client-okhttp:2.3.12")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-    implementation("androidx.datastore:datastore-preferences:1.1.7") // optional if prefer DataStore later
-    implementation("com.squareup.sqldelight:android-driver:1.5.5")
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.kotlinx.coroutines.android)
+    //    implementation("androidx.datastore:datastore-preferences:1.1.7") // optional if prefer DataStore later
 
-    // Koin for Android
-    implementation("io.insert-koin:koin-android:4.1.0")
+    implementation(libs.koin.android)
 
-    implementation("com.arkivanov.decompose:decompose:3.4.0")
-    implementation("com.arkivanov.decompose:extensions-compose:3.4.0")
-    implementation("com.arkivanov.decompose:extensions-compose-experimental:3.4.0")
-
+    implementation(libs.decompose)
+    implementation(libs.decomposeExt.compose)
+    implementation(libs.decomposeExt.compose.experimental)
 }

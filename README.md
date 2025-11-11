@@ -1,39 +1,43 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-    - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-    - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-      For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-      the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-      Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-      folder is the appropriate location.
-
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
-
-### Build and Run Android Application
-
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
-
-### Build and Run iOS Application
-
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+# **Android & iOS CMP/KMP Project**
 
 
-Requirements
+
+Проект содержит **Android**, **iOS** и **общий KMP-модуль** (кроссплатформенное приложение). Общий модуль написан на Kotlin и переиспользуется между платформами: UI на **Compose Multiplatform**, бизнес-логика, сетевой слой и кэш.
+
+### **Используемые технологии**
+-   **Compose Multiplatform** — общий декларативный UI для Android и iOS.
+-   **Kotlin Multiplatform** — иерархическая структура исходников и общий код.
+-   **Decompose** — навигация и жизненный цикл компонент (BLoC), независимая от UI.
+-   **Ktor Client** — кроссплатформенный HTTP-клиент.
+-   **Koin** — DI c поддержкой Compose Multiplatform.
+-   **Multiplatform Settings** — единое key-value-хранилище вместо SharedPreferences/UserDefaults.
+
+----------
+### **Основные функции**
+- Единый UI написанный на Jetpack Compose и логика для Android и iOS (минимум платформенного кода).
+- Экран с погодной информацией: текущая, почасовая (для текущего дня) и прогноз погоды (3 дня) для Москвы
+- Индикатор загрузки (Шиммер цвета радуги с эффектом подсветки/тени)
+- Диалог оповещающий о проблемах в загрузке данных с Интернета
+- Pull to refresh механизм
+- Навигация через дерево компонент Decompose (root/children, back-stack).
+- Сетевой слой на Ktor (таймауты/ретраи/логирование, мульти-энджины).
+- DI на Koin (инъекция в общих и UI-модулях Compose MP).
+- Настройки/кэш в Multiplatform Settings (один API во всех таргетах).
+- Offline-first решение, загруженная с сети погода кэшируется и воспроизводится
+- Ночная/дневная тема
+
+|  |  |
+|--|--|
+|  |  |
+
+
+## **Функции, которые ещё можно добавить**
+
+-   **Модули-фичи**: разнести экраны по feature/* с собственным DI и компонентами Decompose.
+
+-   **SPM/CocoaPods/XCFramework** интеграция для iOS, если нужен иной способ поставки.
+
+-   **CI/CD**: сборка Android AAB/APK и iOS XCFramework на CI (KMP/Compose MP гайды есть у JetBrains).
+
+-  **Доработать дизайн**
