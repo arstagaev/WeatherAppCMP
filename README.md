@@ -3,7 +3,9 @@
 
   <table style= padding:10px">
   <tr>
-    <td>  <img src="./media/1.png"  alt="1" width = 550px > </td>
+    <td>  <img src="./media/1_load.png"  alt="1" width = 550px > </td>
+    <td>  <img src="./media/2_net.png"  alt="1" width = 250px > </td>
+    <td>  <img src="./media/3_charts.png"  alt="1" width = 250px > </td>
   </tr>
 </table>
 
@@ -32,9 +34,7 @@
 - Ночная/дневная тема
 - Сохранение API ключа в keys.properties файле, который можно потом скрыть для публикации
 
-| ![enter image description here](https://github.com/arstagaev/WeatherAppCMP/blob/master/media/1.png) |  |
-|--|--|
-|  |  |
+
 
 
 ## **Функции, которые ещё можно добавить**
