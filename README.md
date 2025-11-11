@@ -1,7 +1,11 @@
 
 # **Android & iOS CMP/KMP Project**
 
-
+  <table style= padding:10px">
+  <tr>
+    <td>  <img src="./media/1.png"  alt="1" width = 550px > </td>
+  </tr>
+</table>
 
 Проект содержит **Android**, **iOS** и **общий KMP-модуль** (кроссплатформенное приложение). Общий модуль написан на Kotlin и переиспользуется между платформами: UI на **Compose Multiplatform**, бизнес-логика, сетевой слой и кэш.
 
@@ -26,8 +30,9 @@
 - Настройки/кэш в Multiplatform Settings (один API во всех таргетах).
 - Offline-first решение, загруженная с сети погода кэшируется и воспроизводится
 - Ночная/дневная тема
+- Сохранение API ключа в keys.properties файле, который можно потом скрыть для публикации
 
-|  |  |
+| ![enter image description here](https://github.com/arstagaev/WeatherAppCMP/blob/master/media/1.png) |  |
 |--|--|
 |  |  |
 
