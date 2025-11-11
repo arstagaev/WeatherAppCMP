@@ -34,8 +34,20 @@
 - Ночная/дневная тема
 - Сохранение API ключа в keys.properties файле, который можно потом скрыть для публикации
 
-
-
+![Demo](./media/rec1.mp4)
+<table cellpadding="10">
+  <tr>
+    <td>
+      <video src="./media/rec1"
+             controls
+             playsinline
+             muted
+             width="550">
+        Your browser does not support the video tag.
+      </video>
+    </td>
+  </tr>
+</table>
 
 ## **Функции, которые ещё можно добавить**
 
@@ -46,3 +58,4 @@
 -   **CI/CD**: сборка Android AAB/APK и iOS XCFramework на CI (KMP/Compose MP гайды есть у JetBrains).
 
 -  **Доработать дизайн**
+
