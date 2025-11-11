@@ -4,15 +4,15 @@
 <table style= padding:10px">
   <tr>
     <td>  <img src="./media/1_load.png"  alt="1" width = 550px > </td>
-    <td>  <img src="./media/2_net.png"  alt="1" width = 250px > </td>
-    <td>  <img src="./media/3_charts.png"  alt="1" width = 250px > </td>
+    <td>  <img src="./media/2_net.png"  alt="1" width = 320px > </td>
+    <td>  <img src="./media/3_charts.png"  alt="1" width = 320px > </td>
   </tr>
 </table>
 
-Проект содержит **Android**, **iOS** и **общий KMP-модуль** (кроссплатформенное приложение). Общий модуль написан на Kotlin и переиспользуется между платформами: UI на **Compose Multiplatform**, бизнес-логика, сетевой слой и кэш.
+Проект содержит **[Android](https://github.com/arstagaev/WeatherAppCMP/tree/master/androidApp)**, **[iOS](https://github.com/arstagaev/WeatherAppCMP/tree/master/iosApp)** и **[общий CMP/KMP модуль](https://github.com/arstagaev/WeatherAppCMP/tree/master/common)** (полностью написанный на Котлин, который может быть перенесен для использования как для чисто андроид приложения, так и в бизнес логику бэкенда).
 
 ### **Используемые технологии**
--   **Compose Multiplatform** — общий декларативный UI для Android и iOS.
+-   **Compose Multiplatform** — общий декларативный UI (Jetpack Compose) для Android и iOS.
 -   **Kotlin Multiplatform** — иерархическая структура исходников и общий код.
 -   **Decompose** — навигация и жизненный цикл компонент (BLoC), независимая от UI.
 -   **Ktor Client** — кроссплатформенный HTTP-клиент.
@@ -36,12 +36,8 @@
 
 
 ## **Функции, которые ещё можно добавить**
-
 -   **Модули-фичи**: разнести экраны по feature/* с собственным DI и компонентами Decompose.
-
 -   **SPM/CocoaPods/XCFramework** интеграция для iOS, если нужен иной способ поставки.
-
 -   **CI/CD**: сборка Android AAB/APK и iOS XCFramework на CI (KMP/Compose MP гайды есть у JetBrains).
-
 -  **Доработать дизайн**
 
