@@ -1,7 +1,7 @@
 
 # **Android & iOS CMP/KMP Project**
 
-  <table style= padding:10px">
+<table style= padding:10px">
   <tr>
     <td>  <img src="./media/1_load.png"  alt="1" width = 550px > </td>
     <td>  <img src="./media/2_net.png"  alt="1" width = 250px > </td>
@@ -34,20 +34,6 @@
 - Ночная/дневная тема
 - Сохранение API ключа в keys.properties файле, который можно потом скрыть для публикации
 
-![Demo](./media/rec1.mp4)
-<table cellpadding="10">
-  <tr>
-    <td>
-      <video src="./media/rec1"
-             controls
-             playsinline
-             muted
-             width="550">
-        Your browser does not support the video tag.
-      </video>
-    </td>
-  </tr>
-</table>
 
 ## **Функции, которые ещё можно добавить**
 
