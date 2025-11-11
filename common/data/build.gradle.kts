@@ -13,7 +13,6 @@ plugins {
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
 
     kotlin("plugin.serialization") version "2.2.0"
-//    id("com.codingfeline.buildkonfig") version "0.17.1"
     id("com.codingfeline.buildkonfig")
 }
 
@@ -33,91 +32,46 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":common:utils"))
 
-            implementation("com.arkivanov.decompose:decompose:3.4.0")
-            implementation("com.arkivanov.decompose:extensions-compose:3.4.0")
-            implementation("com.arkivanov.decompose:extensions-compose-experimental:3.4.0")
+            // Decompose (common)
+            implementation(libs.decompose)
+            implementation(libs.decomposeExt.compose)
+            implementation(libs.decomposeExt.compose.experimental)
 
-            // ktor
-            implementation("io.ktor:ktor-http:2.3.12")
-            implementation("io.ktor:ktor-client-core:2.3.12")
+            // Ktor Start
+            implementation(libs.ktor.http)
+            implementation(libs.ktor.client.core)
             // Logging plugin
-            implementation("io.ktor:ktor-client-logging:2.3.12")
-            implementation("io.ktor:ktor-client-content-negotiation:2.3.12")
-            implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.12")
-            // ktor END
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            // Ktor END
 
             // time
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
+            implementation(libs.kotlinx.datetime)
 
             // key-value storage
-            implementation("com.russhwolf:multiplatform-settings:1.3.0")
-            implementation("com.russhwolf:multiplatform-settings-serialization:1.3.0")
+            implementation(libs.multiplatform.settings)
+            implementation(libs.multiplatform.settings.serialization)
 
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.coroutines.core)
 
         }
         androidMain.dependencies {
             // Koin for Android
-            implementation("io.insert-koin:koin-android:4.1.0")
+            implementation(libs.koin.android)
         }
 
         // iOS UI-specific deps go here if/when you add any
         iosMain.dependencies {
-            implementation("io.ktor:ktor-client-darwin:2.3.12")
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
 
-// load local.properties (untracked) for local dev
-//val localProps = Properties().apply {
-//    val f = rootProject.file("local.properties")
-//    if (f.exists()) f.inputStream().use(::load)
-//}
-//fun secret(name: String): String? =
-//    providers.gradleProperty(name).orNull                             // gradle.properties if you want
-//        ?: providers.environmentVariable(name).orNull                 // CI/CD secret
-//        ?: localProps.getProperty(name)                               // local dev
-
-//buildkonfig {
-//    packageName = "com.tagaev.secrets"
-//    objectName = "Secrets"
-//
-//    defaultConfigs {
-//        buildConfigField(STRING, "WEATHER_API_KEY", secret("WEATHER_API_KEY") ?: "")
-//    }
-////    targetConfigs {
-////        android {
-////            buildConfigField 'STRING', 'name2', 'value2'
-////        }
-////
-////        ios {
-////            buildConfigField 'STRING', 'name', 'valueIos'
-////        }
-////    }
-//}
-
-//buildkonfig {
-//    packageName = "com.tagaev.secrets"
-//    objectName = "Secrets"
-//
-//    // REQUIRED: non-flavored defaults
-//    defaultConfigs {
-//        // read from gradle/local/env – empty fallback OK for dev
-//        val apiKey = providers.gradleProperty("WEATHER_API_KEY").orNull
-//            ?: providers.environmentVariable("WEATHER_API_KEY").orNull
-//            ?: ""
-//        buildConfigField(STRING, "WEATHER_API_KEY", apiKey)
-//    }
-//
-//    // OPTIONAL flavors (ONLY if you’ve set buildkonfig.flavor in gradle.properties)
-//    // defaultConfigs("dev") { buildConfigField(STRING, "WEATHER_API_KEY", apiKey) }
-//    // targetConfigs { create("android") { /* platform-specific overrides */ } }
-//}
-
 // Load local.properties (root of the project)
 val localProps = Properties().apply {
-    val f = rootProject.file("local.properties")
+    val f = rootProject.file("keys.properties")
     if (f.exists()) f.inputStream().use(::load)
 }
 

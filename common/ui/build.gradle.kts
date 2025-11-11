@@ -52,26 +52,26 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // Decompose (common)
-                implementation("com.arkivanov.decompose:decompose:3.4.0")
-                implementation("com.arkivanov.decompose:extensions-compose:3.4.0")
-                implementation("com.arkivanov.decompose:extensions-compose-experimental:3.4.0")
+                implementation(libs.decompose)
+                implementation(libs.decomposeExt.compose)
+                implementation(libs.decomposeExt.compose.experimental)
 
                 // Ktor (common)
-                implementation("io.ktor:ktor-http:2.3.12")
-                implementation("io.ktor:ktor-client-core:2.3.12")
+                implementation(libs.ktor.http)
+                implementation(libs.ktor.client.core)
 
                 // koin
-                implementation("io.insert-koin:koin-core:4.1.0")
-                implementation("io.insert-koin:koin-compose:4.1.0")
+                implementation(libs.koin.core)
+                implementation(libs.koin.compose)
 
                 // Icons Pack
-                implementation("br.com.devsrsouza.compose.icons:feather:1.1.1")
+                implementation(libs.feather)
 
                 // charts
-                implementation("io.github.koalaplot:koalaplot-core:0.10.0")
+                implementation(libs.koalaplot.core)
 
                 // time
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
+                implementation(libs.kotlinx.datetime)
             }
         }
 

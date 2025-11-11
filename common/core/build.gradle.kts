@@ -1,6 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-//import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
-import java.util.Properties
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary) // com.android.kotlin.multiplatform.library
@@ -35,33 +33,29 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // Decompose (common)
-                implementation("com.arkivanov.decompose:decompose:3.4.0")
-                implementation("com.arkivanov.decompose:extensions-compose:3.4.0")
-                implementation("com.arkivanov.decompose:extensions-compose-experimental:3.4.0")
+                implementation(libs.decompose)
+                implementation(libs.decomposeExt.compose)
+                implementation(libs.decomposeExt.compose.experimental)
 
                 // Ktor (common)
-                implementation("io.ktor:ktor-http:2.3.12")
-                implementation("io.ktor:ktor-client-core:2.3.12")
+                implementation(libs.ktor.http)
+                implementation(libs.ktor.client.core)
 
 
                 // koin
-                implementation("io.insert-koin:koin-core:4.1.0")
-                implementation("io.insert-koin:koin-compose:4.1.0")
+                implementation(libs.koin.core)
+                implementation(libs.koin.compose)
 
                 // time
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
+                implementation(libs.kotlinx.datetime)
 
                 // Icons Pack
-                implementation("br.com.devsrsouza.compose.icons:feather:1.1.1")
+                implementation(libs.feather)
 
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+                implementation(libs.kotlinx.serialization.json)
 
-                implementation("com.russhwolf:multiplatform-settings:1.3.0")
-                implementation("com.russhwolf:multiplatform-settings-serialization:1.3.0")
-                // SQL
-                implementation("app.cash.sqldelight:runtime:2.1.0")
-                implementation("app.cash.sqldelight:coroutines-extensions:2.1.0") // .asFlow(), mapToList, etc.
-                implementation("app.cash.sqldelight:primitive-adapters:2.1.0")
+                implementation(libs.multiplatform.settings)
+                implementation(libs.multiplatform.settings.serialization)
             }
         }
 
@@ -70,38 +64,16 @@ kotlin {
                 implementation(libs.androidx.lifecycle.viewmodelCompose)
                 implementation(libs.androidx.lifecycle.runtimeCompose)
 
-                implementation("app.cash.sqldelight:android-driver:2.1.0")
             }
         }
 
         // iOS UI-specific deps go here if/when you add any
         val iosMain by getting {
             dependencies {
-                implementation("app.cash.sqldelight:native-driver:2.1.0")
             }
         }
     }
 }
-
-// load local.properties (untracked) for local dev
-//val localProps = Properties().apply {
-//    val f = rootProject.file("local.properties")
-//    if (f.exists()) f.inputStream().use(::load)
-//}
-//fun secret(name: String): String? =
-//    providers.gradleProperty(name).orNull                             // gradle.properties if you want
-//        ?: providers.environmentVariable(name).orNull                 // CI/CD secret
-//        ?: localProps.getProperty(name)                               // local dev
-//
-//buildkonfig {
-//    packageName = "com.tagaev.secrets"
-//    objectName = "Secrets"
-//
-//    defaultConfigs {
-//        buildConfigField(STRING, "WEATHER_API_KEY", secret("WEATHER_API_KEY") ?: "")
-//    }
-//}
-
 
 //sqldelight {
 //    databases {
