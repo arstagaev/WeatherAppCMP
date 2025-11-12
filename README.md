@@ -39,5 +39,6 @@
 -   **Модули-фичи**: разнести экраны по feature/* с собственным DI и компонентами Decompose.
 -   **SPM/CocoaPods/XCFramework** интеграция для iOS, если нужен иной способ поставки.
 -   **CI/CD**: сборка Android AAB/APK и iOS XCFramework на CI (KMP/Compose MP гайды есть у JetBrains).
--  **Доработать дизайн**
+-   **Доработать дизайн**
+-   Добавить **SQLDelight** для хранения данных в локальной БД
 
